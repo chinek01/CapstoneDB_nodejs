@@ -1,0 +1,165 @@
+<%- include("partials/header.ejs") -%>
+
+<main>
+
+    <!-- <div class="container pt-3 mb-0">
+        <a class="btn btn-secondary" href="/new">New Book</a>        
+        <a href="/new" class="mbtn mbtn-primary">Dodaj książkę</a>
+        <a href="#" class="mbtn mbtn-secondary">Szukaj książki</a>
+    </div> -->
+
+    <div class="main-search-bar">
+        <div class="new-btn">
+            <a href="/new" class="mbtn mbtn-primary">Dodaj książkę</a>
+        </div>
+        <div class="input-holder">
+            <input type="text" placeholder="podaj tytuł przeczytanej książki" class="input-search">
+        </div>
+        <div class="search-btn">
+            <a href="/nf_read_book" class="mbtn mbtn-secondary">Szukaj książki</a>
+        </div>
+    </div>
+
+    <!-- <div class="item-card">
+        <div class="r-card">
+
+            <div class="img-card img-card-r">
+                <div class="img-holder">
+                    <img src="./img/image 1.png" alt="some img">
+                </div>
+            </div>
+
+            <div class="text-card text-card-r">
+                <header>
+                    <h1>Malowany Człowiek Księga I</h1>
+                    <h2>Peter V. Brett</h2>
+                </header>
+                <main>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </main>                   
+                <div class="mbtn-holder mbtn-holder-l">
+                    <a href="/book/1" class="mbtn mbtn-more">Czytaj więcej</a>                            
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="item-card">
+
+        <div class="l-card">
+
+            <div class="img-card img-card-l">
+                <div class="img-holder">
+                    <img src="./img/image 1.png" alt="some img">
+                </div>
+            </div>
+
+            <div class="text-card text-card-l">
+                <header>
+                    <h1>Malowany Człowiek Księga II</h1>
+                    <h2>Peter V. Brett</h2>
+                </header>
+                <main>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </main>                   
+                <div class="mbtn-holder mbtn-holder-r">
+                    <a href="/book/1" class="mbtn mbtn-more">Czytaj więcej</a>                            
+                </div>
+            </div>
+            
+        </div>
+
+    </div> -->
+
+    <% let index = 0 %>
+    <% for (let book of bookList) { %>
+
+        <div class="item-card">
+
+            <% if (index % 2 == 0) { %>                
+
+                <div class="r-card">
+                    <div class="img-card img-card-r">
+                        <div class="img-holder">
+                            <img src="<%= book.book_cover %>" alt="Cover of book - <%= book.title %>">
+                        </div>
+                    </div>
+
+                    <div class="text-card text-card-r">
+                        <header>
+                            <h1><%= book.book_title %></h1>
+                            <h2><%= book.book_author %></h2>
+                        </header>
+                        <main>
+                            <p>
+                                <%= book.book_entry %>
+                            </p>
+                        </main>
+                        <div class="mbtn-holder mbtn-holder-l">
+                            <a href="/book/<%= book.book_id %>" class="mbtn mbtn-more">Czytaj więcej</a>
+                        </div>
+                    </div>
+
+            <% } else { %>
+
+                <div class="l-card">
+                    <div class="img-card img-card-l">
+                        <div class="img-holder">
+                            <img src="<%= book.book_cover %>" alt="Cover of book - <%= book.title %>">
+                        </div>
+                    </div>
+                    <div class="text-card text-card-l">
+                        <header>
+                            <h1><%= book.book_title %></h1>
+                            <h2><%= book.book_author %></h2>
+                        </header>
+                        <main>
+                            <p>
+                                <%= book.book_entry %>
+                            </p>
+                        </main>
+                        <div class="mbtn-holder mbtn-holder-r">
+                            <a href="/book/<%= book.book_id %>" class="mbtn mbtn-more">Czytaj więcej</a>
+                        </div>
+                    </div>
+
+            <% } %>            
+
+            </div>
+
+        </div>
+
+        <% index += 1 %>
+
+    <% } %>
+
+    <!-- <div class="container pt-3 mb-0">                
+
+        <% for (let book of bookList) { %>
+        <div class="row my-5">
+            <div class="col col-md-4">
+                <img src="<%= book.book_cover %>" alt="Cover of book - <%= book.title %>">
+            </div>
+            <div class="col col-md-8">
+                <p><%= book.book_title %></p>
+                <p><%= book.book_author %></p>
+                <p><%= book.book_read_date %></p>
+                <p>Moja ocena: <%= book.book_recomend %></p>
+                <p><%= book.book_entry %></p>
+                <p>
+                    <a href="/book/<%= book.book_id %>" class="btn btn-info">Czytaj więcej</a>                    
+                </p>
+            </div>
+        </div>
+        <% } %>
+    </div> -->
+
+</main>
+
+
+<%- include('partials/footer.ejs') -%>

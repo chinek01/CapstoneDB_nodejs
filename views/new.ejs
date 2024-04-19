@@ -1,0 +1,213 @@
+<%- include("partials/header.ejs") -%>
+
+<main>
+
+    <!-- isbn -->
+
+    <form action="/search_engine" method="post">
+        <div class="isbn-search-container">
+            <input type="text" placeholder="wyszukaj po ISBN" class="isbn-input" id="search_engine" name="search_engine">                
+            <div class="search-btn">
+                <button class="mbtn mbtn-secondary" type="submit">Szukaj książkę</button>
+                <!-- <a href="#" class="mbtn mbtn-secondary">Szukaj książkę</a> -->
+            </div>
+        </div>
+    </form>
+
+    <!-- new book info -->
+    <form action="/new" method="post">
+        <div class="new-book">
+
+            <!-- book grid -->
+            <div class="center">
+
+                <div class="book-grid">
+
+                    <div class="item-cover-img img-field">
+                        <img src="<%= locals.cover ? cover : './img/temp_cover.png' %>" alt="book cover img">
+                    </div>
+
+                    <div class="field item-title">
+                        <label for="book_title">Tytuł książki:</label>
+                        <input type="text" name="book_title" id="book_title" placeholder="<%= locals.error ?errpr : locals.book_title ? book_title : 'Wpisz tytuł książki' %>">
+                    </div>
+
+                    <div class="item-author field">
+                        <label for="book_author">Autor książki:</label>
+                        <input type="text" name="book_author" id="book_author" placeholder="<%= locals.book_author ? book_author : 'Podaj autora książki' %>">
+                    </div>
+
+                    <div class="item-isbn field">
+                        <label for="book_isbn">Numer ISBN:</label>
+                        <input type="text" name="book_isbn" id="book_isbn" placeholder="<%= locals.isbn ? isbn : 'Numer ISBN' %>">
+                    </div>
+
+                    <div class="item-shop-link field">
+                        <label for="book_shop_link">Link do strony w sklepie:</label>
+                        <input type="text" name="book_shop_link" id="book_shop_link" placeholder="Podaj link do pozycji w sklepie">
+                    </div>
+
+                    <div class="item-read-date field">
+                        <label for="book_read_date">Data przeczytania:</label>
+                        <input type="date" name="book_read_date" id="book_read_date">
+                    </div>
+
+                    <div class="item-recomend field">
+                        <label for="book_recomend">Moja ocena:</label>
+                        <input type="number" name="book_recomend" id="book_recomend" value="5" min="0" max="10">
+                    </div>                          
+
+                </div>
+
+            </div>
+
+            <!-- entry -->
+            <div class="big-field">
+
+                <label for="book_entry">Moja zajawka:</label>
+                <textarea name="book_entry" id="book_entry" cols="30" rows="10" placeholder="Napisz coś o książce"></textarea>
+
+            </div>
+            
+            <!-- notes -->
+            <div class="big-field">
+
+                <label for="book_notes">Moje notatki:</label>
+                <textarea name="book_notes" id="book_notes" cols="30" rows="10" placeholder="Jakie fragmenty tej pozycji są najciekawsze"></textarea>
+
+            </div>
+
+            <!-- button dodający wpis -->  
+            <div class="container">          
+                <div class="add-btn-box">
+                    <button class="mbtn mbtn-secondary" type="submit">Dodaj książkę</button>
+                </div>
+            </div>
+
+        </div>
+                
+    </form>
+
+    <!-- <div class="container mb-0 py-5">
+        <h1>Add new readed book</h1>
+
+        <div class="container mb-0 py-5">
+            <h3>Find book by title</h3>
+            <form action="/search_engine" method="post">
+                <input type="text" name="search_engine" id="search_engine" placeholder="search by ISBN" autofocus>
+                <button class="btn btn-info" type="submit">Find</button>
+            </form>
+        </div>
+
+        <form action="/new" method="post" class="newBook">            
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                        <label for="book_title">Book title: </label>            
+                    </div>
+                    <div class="col-10">
+                        <input type="text" name="book_title" id="book_title" autofocus placeholder="<%= locals.erorr ? error : locals.book_title ? book_title : 'Enter book title' %>">
+                    </div>
+                </div>  
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="book_author">Book author</label>
+                    </div>
+                    <div class="col-10">
+                        <input type="text" name="book_author" id="book_author" autofocus placeholder="<%= locals.book_author ? book_author : 'Book author' %>  ">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-2">
+                        <label for="isbn">Book ISBN: </label>
+                    </div>
+                    <div class="col-10">
+                        <input type="text" name="isbn" id="isbn" autofocus placeholder="<%= locals.isbn ? isbn : 'ISBN'%> ">            
+                    </div>  
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="cover">Book cover url: </label>
+                    </div>
+                    <div class="col-10">
+                        <input type="text" name="cover" id="cover" autofocus placeholder="<%= locals.cover ? cover : 'cover url' %>">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="shop_link">Link to shop</label>
+                    </div>
+                    <div class="col-10">
+                        <input type="text" name="shop_link" id="shop_link" autofocus placeholder="Shop lik">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="date">Readed date: </label>
+                    </div>
+                    <div class="col-4">
+                        <input type="date" name="read_date" id="read_date">
+                    </div>
+                    <div class="col-2">
+                        <label for="recomend">My recomend:</label>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" name="recomend" id="recomend" value="5">   
+                    </div>
+                </div>                
+                      
+                <div class="row">
+                    <div class="col-2">
+                        <label for="entry">Some entry</label>
+                    </div>
+                    <div class="col-10">
+                        <textarea name="entry" id="entry" cols="30" rows="10" autofocus placeholder="Entry about book"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="notes">My notes about readed book</label>
+                    </div>
+                    <div class="col-10">
+                        <textarea name="notes" id="notes" cols="30" rows="10" autofocus placeholder="Notes about book"></textarea>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div> -->
+
+</main>
+
+<script> 
+
+    // ustawianie daty w kontrolce
+
+    // Pobierz obecną datę
+    var currentDate = new Date();
+
+    // Konwertuj datę do formatu YYYY-MM-DD
+    var year = currentDate.getFullYear();
+    var month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+    var day = ('0' + currentDate.getDate()).slice(-2);
+    var formattedDate = year + '-' + month + '-' + day;
+
+    // Ustaw wartość pola input na obecną datę
+    document.getElementById('book_read_date').value = formattedDate;    
+
+</script>
+
+
+<%- include("partials/footer.ejs") -%>

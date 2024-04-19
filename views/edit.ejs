@@ -1,0 +1,82 @@
+<%- include("partials/header.ejs") -%>
+
+<main>
+
+    <form action="/edit" method="post">
+
+        <div class="new-book">
+
+            <!-- book grid -->
+            <div class="center">
+
+                <div class="book-grid">
+
+                    <div class="item-cover-img img-field">
+                        <img src="<%= book_cover %>" alt="book cover img">
+                    </div>
+
+                    <div class="field item-title">
+                        <label for="book_title">Tytuł książki:</label>
+                        <input type="text" name="book_title" id="book_title" value="<%= book_title %>">
+                    </div>
+
+                    <div class="field item-author">
+                        <label for="book_author">Autor książki:</label>
+                        <input type="text" name="book_author" id="book_author" value="<%= book_author %>">
+                    </div>
+
+                    <div class="field item-isbn">
+                        <label for="book_isbn">Numer ISBN:</label>
+                        <input type="text" name="book_isbn" id="book_isbn" value="<%= book_isbn %>">
+                    </div>
+
+                    <div class="field item-shop-link">
+                        <label for="book_shop_link">Link do strony w sklepie:</label>
+                        <input type="text" name="book_shop_link" id="book_shop_link" value="<%= book_shop_link %>">
+                    </div>
+
+                    <div class="field item-read-date">
+                        <label for="book_read_date">Data przeczytania:</label>
+                        <input type="date" name="book_read_date" id="book_read_date" value="<%= book_read_date %>">
+                    </div>
+
+                    <div class="field item-recomend">
+                        <label for="book_recomend">Moja ocena:</label>
+                        <input type="number" name="book_recomend" id="book_recomend" min="0" max="10" value="<%= book_recomend %>">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- entry -->
+            <div class="big-field">
+
+                <label for="book_entry">Moja zajawka:</label>
+                <textarea name="book_entry" id="book_entry" cols="30" rows="10"><%= book_entry %></textarea>
+
+            </div>
+
+            <!-- notes -->
+            <div class="big-field">
+
+                <label for="book_notes">Moje notatki:</label>
+                <textarea name="book_notes" id="book_notes" cols="30" rows="10"><%= book_notes %></textarea>
+
+            </div>
+
+            <input type="hidden" name="book_id" id="book_id" value="<%= book_id %>" >
+            <input type="hidden" name="book_cover" id="book_cover" value="<%= book_cover %>">
+
+            <div class="container">
+                <div class="add-btn-box">
+                    <button class="btn btn-secondary" type="submit">Aktualizuj</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+</main>
+
+<%- include("partials/footer.ejs") -%>

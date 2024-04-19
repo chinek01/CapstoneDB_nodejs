@@ -1,0 +1,146 @@
+<%- include("partials/header_copy.ejs") -%>
+
+<main>
+
+<div class="item-card m-b-50">
+
+    <div class="r-card">
+        <div class="img-card img-card-r">
+            <div class="img-holder">
+                <img src="<%= book_cover %>" alt="<%= book_title %> - book cover">
+            </div>
+        </div>    
+
+        <div class="text-card text-card-r">
+            <header>
+                <h1><%= book_title %></h1>
+                <h2><%= book_author %></h2>
+                <div class="other-book-info">
+                    <h3>ISBN: <%= book_isbn %></h3>
+                    <h3>Data przeczytania: <%= book_read_date %></h3>
+                    <h3>Moja ocena: <span><%= book_recomend %></span>/10</h3>
+                </div>
+            </header>
+            <h2>Zajawka:</h2>
+            <main class="one_book_entry">
+                <p>
+                    <%= book_entry %>
+                </p>
+            </main>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="note-card m-b-50">
+
+    <div class="note">
+        
+        <h1>Moje notatki</h1>
+        
+        <div class="note-holder">
+            <p>
+                <%= book_notes %>
+            </p>
+        </div>  
+    </div>
+
+</div>
+
+<div class="book-btn-container">
+    <div class="book-btn-holder">
+        <a href="/delete/<%= book_id %>" class="mbtn mbtn-delete">Usuń wpis</a>
+        <a href="/edit/<%= book_id %>" class="mbtn mbtn-secondary">Edytuj wpis</a>
+    </div>
+</div>
+
+<!-- <div class="container">
+    <h1>My Book</h1>
+</div>
+<div class="book">
+    <div class="container">
+        <h1>
+            <%= book_title %>
+        </h1> 
+
+        <div class="item">
+            <div class="d-flex">                
+                <a href="/delete/<%= book_id %>" class="btn btn-denger">Delete</a> 
+            </div>            
+            
+            <form action="/edit" method="post">
+                <input type="text" value="<%= book_id %>" hidden="false" autofocus="true" name="book_id" id="book_id" autocomplete="off" />
+                
+                <input 
+                    type="text" 
+                    id="book_author" 
+                    name="book_author" 
+                    value="<%= book_author %>" 
+                    autocomplete="off" 
+                    autofocus="true"  />
+
+                <input type="text" name="book_title" id="book_title"
+                hidden="false" value="<%= book_title %>">
+                
+                <input 
+                    type="text" 
+                    name="book_cover" 
+                    id="book_cover" 
+                    value="<%= book_cover %>" 
+                    autocomplete="off"
+                    autofocus="true"/>
+
+                <img src="<%= book_cover %>" alt="<%= book_title %> - book cover">
+
+                <input 
+                    type="text" 
+                    name="book_isbn" 
+                    id="book_isbn" 
+                    value="<%= book_isbn %>"
+                    autocomplete="off" 
+                    autofocus="true" />     
+
+                <input 
+                    type="text"
+                    name="book_shop_link"
+                    id="book_shop_link"
+                    value="<%= book_shop_link %>"
+                    autocomplete="off"
+                    autofocus="true"/>
+                <a href="<%= book_shop_link %>" target="_blank">Link Shop</a>
+                
+                <input 
+                    type="date" 
+                    name="book_read_date"
+                    id="book_read_date"
+                    autocomplete="off"
+                    autofocus="true"
+                    value="<%= book_read_date %>"/>                    
+                    
+                <input 
+                    type="number" 
+                    name="book_recomend" 
+                    id="book_recomend"
+                    min="0"
+                    max="10"
+                    value="<%= book_recomend %>" />
+
+                <textarea name="book_entry" id="entry" cols="30" rows="10" ><%= book_entry %></textarea>
+                
+                <textarea name="book_notes" id="notes" cols="30" rows="10"><%= book_notes %></textarea>
+
+                <button class="btn btn-info" type="submit" value=<%= book_id %> >Aktualizuj</button>
+
+            </form>
+        </div>
+    </div>
+</div> -->
+
+</main>
+
+<script>
+    // skrypt do aktywowania elementów do edycji - chyba 
+</script>
+
+<%- include("partials/footer.ejs") -%>
